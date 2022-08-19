@@ -44,6 +44,13 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
                     <mesh filename="package://poli2_description/meshes/components/pillar_exterior_collision.STL" />
                 </geometry>
             </collision>
+            <inertial>
+                <!-- calculated from STL assuming uniform density of 270 kg/m^3 (1/10 the density of solid aluminum) -->
+                <!-- this is a terrible estimate but we need something here for gazebo to load it in -->
+                <mass value="1.147" />
+                <origin xyz="0.0985 0.2562 0.0669" />
+                <inertia ixx="0.0385" ixy="0.0051" ixz="0" iyy="0.0062" iyz="0" izz="0.0041" /> 
+            </inertial>
         </link>
     </xacro:macro>
 </robot>

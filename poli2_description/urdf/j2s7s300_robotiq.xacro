@@ -154,9 +154,13 @@
         <xacro:kinova_armlink link_name="${prefix}_link_6" link_mesh="${link_6_mesh}" use_ring_mesh="true" ring_mesh="ring_small" mesh_no="${link_6_mesh_no}"/>
         <xacro:kinova_armjoint joint_name="${prefix}_joint_6" type="${joint_6_type}" parent="${prefix}_link_5" child="${prefix}_link_6" joint_axis_xyz="${joint_6_axis_xyz}" joint_origin_xyz="${joint_6_origin_xyz}" joint_origin_rpy="${joint_6_origin_rpy}" joint_lower_limit="${joint_6_lower_limit}" joint_upper_limit="${joint_6_upper_limit}" joint_velocity_limit="${joint_6_velocity_limit}" joint_torque_limit="${joint_6_torque_limit}"/>
 
+        <xacro:kinova_armlink link_name="${prefix}_link_7" link_mesh="${link_7_mesh}" use_ring_mesh="true" ring_mesh="ring_small" mesh_no="${link_7_mesh_no}"/>
+        <xacro:kinova_armjoint joint_name="${prefix}_joint_7" type="${joint_7_type}" parent="${prefix}_link_6" child="${prefix}_link_7" joint_axis_xyz="${joint_7_axis_xyz}" joint_origin_xyz="${joint_7_origin_xyz}" joint_origin_rpy="${joint_7_origin_rpy}" joint_lower_limit="${joint_7_lower_limit}" joint_upper_limit="${joint_7_upper_limit}" joint_velocity_limit="${joint_7_velocity_limit}" joint_torque_limit="${joint_7_torque_limit}"/>
+
 
         <!-- RAIL end-effector additions/modifications -->
 
+        <!--
         <joint name="${prefix}_joint_7" type="continuous">
           <parent link="${prefix}_link_6" />
           <child link = "${prefix}_link_7" />
@@ -177,7 +181,7 @@
               <mesh filename="package://poli2_description/meshes/manipulator/robotiq_wrist.stl"/>
             </geometry>
           </collision>
-        </link>
+        </link> -->
 
         <link name="${prefix}_ee_base"/>
         <joint name="${prefix}_ee_fixed_joint" type="fixed">
