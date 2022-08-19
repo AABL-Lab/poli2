@@ -523,10 +523,10 @@ void eye_srv_callback(const poli_msgs::LedEye::Request & req, poli_msgs::LedEye:
       if(req.which_feature == req.DIRECTION || req.which_feature == req.BOTH){
         eye_direction = req.eye_direction;
       } 
-      else if(req.which_feature == req.SHAPE || req.which_feature == req.BOTH){
+      if(req.which_feature == req.SHAPE || req.which_feature == req.BOTH){
         eye_shape = req.eye_shape;
       }
-      else if(req.which_feature == req.COLOR){
+      if(req.which_feature == req.COLOR){
         eye_color_idx = req.eye_color;
       }
     }
@@ -535,10 +535,10 @@ void eye_srv_callback(const poli_msgs::LedEye::Request & req, poli_msgs::LedEye:
       if(req.which_feature == req.DIRECTION || req.which_feature == req.BOTH){
         mouth_direction = req.mouth_direction;
       } 
-      else if(req.which_feature == req.SHAPE || req.which_feature == req.BOTH){
+      if(req.which_feature == req.SHAPE || req.which_feature == req.BOTH){
         mouth_shape = req.mouth_shape;
       }
-      else if(req.which_feature == req.COLOR){
+      if(req.which_feature == req.COLOR){
         mouth_color_idx = req.mouth_color;
       }
     }
@@ -680,10 +680,3 @@ void loop()
   nh.spinOnce();
   delay(10);
 }
-
-
-
-
-
-
-
