@@ -1,4 +1,5 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <!-- j2_s7 refers to jaco v2 7DOF spherical -->
 
 
@@ -29,7 +30,8 @@
     <xacro:property name="link_4_mesh" value="forearm" />
     <xacro:property name="link_5_mesh" value="wrist_spherical_1" />
     <xacro:property name="link_6_mesh" value="wrist_spherical_2" />
-    <xacro:property name="link_7_mesh" value="hand_3finger" />
+    <!--    <xacro:property name="link_7_mesh" value="hand_3finger" />  replaced by robotiq adaptor-->
+    <xacro:property name ="link_7_mesh" value = "bota_and_adaptors" />
 
     <!--Used for conditional arguments for setting inertial parameters
         base 0, shoulder 1, arm 2, forearm 3, wrist 4, arm_mico 5,
@@ -44,7 +46,7 @@
     <xacro:property name="link_4_mesh_no" value="3" />
     <xacro:property name="link_5_mesh_no" value="8" />
     <xacro:property name="link_6_mesh_no" value="9" />
-    <xacro:property name="link_7_mesh_no" value="55" />
+   <xacro:property name="link_7_mesh_no" value="55" />  
 
     <xacro:property name="joint_base" value="joint_base" />
     <xacro:property name="joint_base_type" value="fixed" />
@@ -116,9 +118,10 @@
     <xacro:property name="joint_7_type" value="continuous" />
     <xacro:property name="joint_7_axis_xyz" value="0 0 1" />
     <xacro:property name="joint_7_origin_xyz" value="0 0.10375 0" />
-    <xacro:property name="joint_7_origin_rpy" value="${-J_PI/2} 0 ${J_PI}" />
-    <xacro:property name="joint_7_lower_limit" value="${-2*J_PI}" />
-    <xacro:property name="joint_7_upper_limit" value="${2*J_PI}" />
+<!--    <xacro:property name="joint_7_origin_rpy" value="0 0 ${-J_PI/2}" /> -->
+    <xacro:property name="joint_7_origin_rpy" value="${-J_PI/2} 0 ${-J_PI}" />
+    <xacro:property name="joint_7_lower_limit" value="${-J_PI/2}" />
+    <xacro:property name="joint_7_upper_limit" value="${J_PI/2}" /> <!-- limited for cable -->
     <xacro:property name="joint_7_velocity_limit" value="${48*J_PI/180}" />
     <xacro:property name="joint_7_torque_limit" value="20" />
 
@@ -126,7 +129,7 @@
     <xacro:property name="joint_end_effector_type" value="fixed" />
     <xacro:property name="joint_end_effector_axis_xyz" value="0 0 0" />
     <xacro:property name="joint_end_effector_origin_xyz" value="0 0 -0.1600" />
-    <xacro:property name="joint_end_effector_origin_rpy" value="${J_PI} 0 0" />
+    <xacro:property name="joint_end_effector_origin_rpy" value="0 0 ${J_PI}" /> 
 
 
     <xacro:macro name="j2s7s300" params="base_parent prefix:=j2s7s300 trans:=${joint_base_origin_xyz} rot:=${joint_base_origin_rpy}">
@@ -154,8 +157,14 @@
         <xacro:kinova_armlink link_name="${prefix}_link_6" link_mesh="${link_6_mesh}" use_ring_mesh="true" ring_mesh="ring_small" mesh_no="${link_6_mesh_no}"/>
         <xacro:kinova_armjoint joint_name="${prefix}_joint_6" type="${joint_6_type}" parent="${prefix}_link_5" child="${prefix}_link_6" joint_axis_xyz="${joint_6_axis_xyz}" joint_origin_xyz="${joint_6_origin_xyz}" joint_origin_rpy="${joint_6_origin_rpy}" joint_lower_limit="${joint_6_lower_limit}" joint_upper_limit="${joint_6_upper_limit}" joint_velocity_limit="${joint_6_velocity_limit}" joint_torque_limit="${joint_6_torque_limit}"/>
 
+	<!--        <xacro:kinova_armlink link_name="${prefix}_link_7" link_mesh="${link_7_mesh}" use_ring_mesh="true" ring_mesh="ring_small" mesh_no="${link_7_mesh_no}"/> -->
 
-        <!-- RAIL end-effector additions/modifications -->
+<link name="${prefix}_link_7" />
+
+	
+        <xacro:kinova_armjoint joint_name="${prefix}_joint_7" type="${joint_7_type}" parent="${prefix}_link_6" child="${prefix}_link_7" joint_axis_xyz="${joint_7_axis_xyz}" joint_origin_xyz="${joint_7_origin_xyz}" joint_origin_rpy="${joint_7_origin_rpy}" joint_lower_limit="${joint_7_lower_limit}" joint_upper_limit="${joint_7_upper_limit}" joint_velocity_limit="${joint_7_velocity_limit}" joint_torque_limit="${joint_7_torque_limit}"/>
+
+        <!-- RAIL end-effector additions/modifications that were wrong - Joint 7 in the wrong place
 
         <joint name="${prefix}_joint_7" type="continuous">
           <parent link="${prefix}_link_6" />
@@ -164,37 +173,50 @@
           <axis xyz="0 0 1" />
           <limit effort="600.8" velocity="0.785"/>
           <dynamics damping="0.0" friction="0.0"/>
-        </joint>
+        </joint> -->
 
-        <link name="${prefix}_link_7">
+       
+	<!--        <link name="${prefix}_ee_base"/> -->
+
+	
+ <link name="${prefix}_ee_base">
           <visual>
             <geometry>
-              <mesh filename="package://poli2_description/meshes/manipulator/robotiq_wrist.dae"/>
+              <mesh filename="package://poli2_description/meshes/manipulator/bota_and_adaptors.dae"/>
             </geometry>
           </visual>
           <collision>
             <geometry>
-              <mesh filename="package://poli2_description/meshes/manipulator/robotiq_wrist.stl"/>
+              <mesh filename="package://poli2_description/meshes/manipulator/bota_and_adaptors.stl"/>
             </geometry>
           </collision>
         </link>
 
-        <link name="${prefix}_ee_base"/>
+
+	
         <joint name="${prefix}_ee_fixed_joint" type="fixed">
           <parent link="${prefix}_link_7" />
           <child link = "${prefix}_ee_base" />
-          <origin xyz="0 0 -0.09380704" rpy="0 ${J_PI/2} 0" />
+          <origin xyz="0 0 0" rpy="0  ${J_PI/2} 0" />
         </joint>
-
+	
+	<joint name="bota_ftsensor_joint" type="fixed">
+	  <parent link="${prefix}_link_7"/>
+	  <child link="bota_ftsensor_wrench" />
+	  <origin xyz="0 0 -0.055" rpy="0 ${J_PI} ${J_PI/2}" />
+	</joint>
+	<link name="bota_ftsensor_wrench" />
+	
         <link name="${prefix}_ee_link"/>
-        <joint name="${prefix}_ee_gripper" type="fixed">
+
+	<joint name="${prefix}_ee_gripper" type="fixed">
           <parent link="${prefix}_ee_base" />
           <child link ="${prefix}_ee_link" />
           <origin xyz="0.13 0 0" />
         </joint>
 
-        <xacro:robotiq_85_gripper prefix="" parent="${prefix}_ee_base">
-          <origin xyz="0 0 0" rpy="${J_PI/2} 0 0"/>
+        <xacro:robotiq_85_gripper prefix="" parent="${prefix}_link_7">
+          <origin xyz="0 0 -0.115" rpy="0 ${J_PI/2} 0"/>
         </xacro:robotiq_85_gripper>
 
     </xacro:macro>

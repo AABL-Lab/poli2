@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find rokubimini_ethercat)/launch/rokubimini_ethercat.launch">
+    <arg name="ft_sensor_a_name" value="bota_ftsensor"/>
+  </include>
+</launch>

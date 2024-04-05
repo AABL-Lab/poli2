@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Copyright (c) 2017, Elaine Short, SIM Lab
 # All rights reserved.
@@ -65,11 +65,11 @@ if __name__=="__main__":
     board_offset = m(5/8) # height of the boards beneath the standalone arm
     back_offset = m(5.1) # how far backwards the arm has moved from its original position
 
-    table_shelf_top_height= m(26)-0.02
-    table_shelf_middle_height= m(16.5)
-    table_shelf_bottom_height= m(7)-0.02
-    foot_width = m(0.5)
-    foot_height = m(25)
+#    table_shelf_top_height= m(26)-0.02
+#    table_shelf_middle_height= m(16.5)
+#    table_shelf_bottom_height= m(7)-0.02
+#    foot_width = m(0.5)
+#    foot_height = m(25)
 
     table_center_x = -0.569
     table_center_y = -0.50
@@ -79,19 +79,19 @@ if __name__=="__main__":
     table_width = m(11)
     table_length = m(25)
     # make it much taller than strictly necessary just so we never pass in front of and above the crossbar
-    top_bar_thickness = 0.3
-    bar_pos = m(-22)
+#    top_bar_thickness = 0.3
+#    bar_pos = m(-22)
 
     safety_buffer = 0.04 
 
     p.add_box("back", "world", size=(5, 0.3, 2), position=(0, 0.35, 0-board_offset), color=(0,0,1.,0.4))
-    p.add_box("left_wall", "world", size=(0.3, 2, 2), position=(0.45, 0, 0-board_offset), color=(0,0,1.,0.4))
+#    p.add_box("left_wall", "world", size=(0.3, 2, 2), position=(0.45, 0, 0-board_offset), color=(0,0,1.,0.4))
     p.add_box("table", "world", size=(5, 2, table_thickness + board_offset), position=(0, 0, table_z - (table_thickness/2) -board_offset), color=(0,0,1.,0.4))
 
-    p.add_box("shelves_top", "world", size=(table_length+safety_buffer, table_width+safety_buffer, shelf_thickness+safety_buffer), position=(table_center_x, table_center_y-back_offset, table_shelf_top_height-board_offset), color=(0.5,0,1.,0.4))
-    p.add_box("shelves_middle", "world", size=(table_length+safety_buffer, table_width+safety_buffer, shelf_thickness+safety_buffer), position=(table_center_x, table_center_y-back_offset, table_shelf_middle_height-board_offset), color=(0.5,0,1.,0.4))
-    p.add_box("shelves_bottom", "world", size=(table_length+safety_buffer, table_width+safety_buffer, shelf_thickness+safety_buffer), position=(table_center_x, table_center_y-back_offset, table_shelf_bottom_height-board_offset), color=(0.5,0,1.,0.4))
+#    p.add_box("shelves_top", "world", size=(table_length+safety_buffer, table_width+safety_buffer, shelf_thickness+safety_buffer), position=(table_center_x, table_center_y-back_offset, table_shelf_top_height-board_offset), color=(0.5,0,1.,0.4))
+#    p.add_box("shelves_middle", "world", size=(table_length+safety_buffer, table_width+safety_buffer, shelf_thickness+safety_buffer), position=(table_center_x, table_center_y-back_offset, table_shelf_middle_height-board_offset), color=(0.5,0,1.,0.4))
+#    p.add_box("shelves_bottom", "world", size=(table_length+safety_buffer, table_width+safety_buffer, shelf_thickness+safety_buffer), position=(table_center_x, table_center_y-back_offset, table_shelf_bottom_height-board_offset), color=(0.5,0,1.,0.4))
 
-    p.add_box("shelves_right_foot", "world", size=(foot_width+safety_buffer, table_width+safety_buffer, foot_height+safety_buffer), position=(table_center_x+(table_length/2), table_center_y-back_offset, 0.385-board_offset), color=(0.5,0,1.,0.4))
-    p.add_box("shelves_left_foot", "world", size=(foot_width+safety_buffer, table_width+safety_buffer, foot_height+safety_buffer), position=(table_center_x-(table_length/2), table_center_y-back_offset, 0.385-board_offset), color=(0.5,0,1.,0.4))
+#    p.add_box("shelves_right_foot", "world", size=(foot_width+safety_buffer, table_width+safety_buffer, foot_height+safety_buffer), position=(table_center_x+(table_length/2), table_center_y-back_offset, 0.385-board_offset), color=(0.5,0,1.,0.4))
+#    p.add_box("shelves_left_foot", "world", size=(foot_width+safety_buffer, table_width+safety_buffer, foot_height+safety_buffer), position=(table_center_x-(table_length/2), table_center_y-back_offset, 0.385-board_offset), color=(0.5,0,1.,0.4))
    

@@ -13,11 +13,12 @@
         <arg name="standalone" value="true" />
     </include>
 
-    <!-- <node
+   <node
         name="collision_scene"
+	output="screen"
         pkg="poli2_launch"
         type="setup_$(arg robot_name)_collision_scene.py"
-    /> -->
+    />
 
 
 
