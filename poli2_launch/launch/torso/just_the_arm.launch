@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="robot_name" default="beep"/>
+  
+    <!-- If true, we're running in Gazebo. Don't run the low-level arm driver.
+         If false, we're running on hardware. Start the low-level arm driver. -->
+    <arg name="sim" default="false" />
+    <!-- if we're using moveit fake_controller or gazebo as the backend -->
+    <arg name="sim_backend" default="moveit" />
+
+    <!-- If true, the launch file will start the robot and joint state
+         publishers needed for moveit to execute trajectories correctly.
+         Keep this as false if you're including this launch file from a 
+         different launch file. -->
+    <arg name="standalone" default="false" />
+
+    <arg name="kinova_model" default="j2s7s300" />
+    
+    <!-- Gripper Params --> 
+    <arg name="gripper_comport" default="/dev/tty_gripper"/>
+    <arg name="gripper_baud" default="115200"/>
+    
+    <!-- Start the low-level driver -->
+    <node pkg="robotiq_85_driver" type="robotiq_85_driver" name="robotiq_85_driver" respawn="true" output="screen" unless="$(arg sim)">
+        <param name="num_grippers" value="1" />
+        <param name="comport" value="$(arg gripper_comport)" />
+        <param name="baud" value="$(arg gripper_baud)" />
+    </node>
+
+</launch>
