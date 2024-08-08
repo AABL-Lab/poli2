@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="ft_sensor_a_name"                 default="ft_sensor0"/>
-  <node name="bus0" pkg="rokubimini_ethercat" type="rokubimini_ethercat_bus_manager_node"  output="screen" launch-prefix="ethercat_grant" required="true">
+  <node name="bus0" pkg="rokubimini_ethercat" type="rokubimini_ethercat_bus_manager_node"  output="screen" launch-prefix="$(find poli2_launch)/scripts/sudo_launch.sh ethercat_grant" required="true">
     <param name="num_spinners"                              type="int"      value="1"/>
     <param name="time_step"                                 type="double"   value="0.01"/>
 
