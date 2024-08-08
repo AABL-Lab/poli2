@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 <launch>
-  <include file="$(find rokubimini_ethercat)/launch/rokubimini_ethercat.launch">
-    <arg name="ft_sensor_a_name" value="bota_ftsensor"/>
-  </include>
+  <arg name="ft_sensor_a_name"                 default="ft_sensor0"/>
+  <node name="bus0" pkg="rokubimini_ethercat" type="rokubimini_ethercat_bus_manager_node"  output="screen" launch-prefix="ethercat_grant" required="true">
+    <param name="num_spinners"                              type="int"      value="1"/>
+    <param name="time_step"                                 type="double"   value="0.01"/>
+
+    <param name="ethercat_bus"  type="string"   value="enp5s0"/>
+    <param name="rokubiminis/$(arg ft_sensor_a_name)/name" type="string" value="$(arg ft_sensor_a_name)"/>
+    <param name="rokubiminis/$(arg ft_sensor_a_name)/product_name" type="string" value="BFT-xxx-xx-xx-xx"/>
+    <rosparam ns="rokubiminis/$(arg ft_sensor_a_name)" command="load" file="$(find rokubimini)/config/rokubimini_sensor.yaml" />
+    <param name="rokubiminis/$(arg ft_sensor_a_name)/ethercat_address" type="int"   value="1"/>
+  </node>
 </launch>
