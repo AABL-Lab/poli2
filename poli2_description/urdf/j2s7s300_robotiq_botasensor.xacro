@@ -203,7 +203,7 @@
 	<joint name="bota_ftsensor_joint" type="fixed">
 	  <parent link="${prefix}_link_7"/>
 	  <child link="ft_sensor0_wrench"/>
-	  <origin xyz="0 0 -0.055" rpy="0 ${J_PI} ${J_PI/2}" />
+	  <origin xyz="0 0 -0.055" rpy="0 -${J_PI} -${J_PI/2}" />
 	</joint>
 	
 	<link name="ft_sensor0_wrench" />
@@ -211,7 +211,7 @@
 	<joint name="bota_ftsensor_joint2" type="fixed">
 	  <parent link="${prefix}_link_7"/>
 	  <child link="ft_sensor0_imu" />
-	  <origin xyz="0 0 -0.055" rpy="0 ${J_PI} ${J_PI/2}" />
+	  <origin xyz="0 0 -0.055" rpy="0 -${J_PI} -${J_PI/2}" />
 	</joint>
 
 	
