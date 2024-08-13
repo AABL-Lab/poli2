@@ -48,7 +48,7 @@ if __name__=="__main__":
     p.remove("roof")
 
     table_z = -0.04
-    table_thickness = 0.2
+    table_thickness = 0.05
     height = m(27.75)
     post_xsize = m(3)
     post_ysize = m(3)
@@ -65,7 +65,7 @@ if __name__=="__main__":
 
     p.add_box("back", "base_link", size=(2, 0.1, 2), position=(-.35, 0.0, 1), color=(0,0,1.,0.4),orientation=(6.85288451e-01, 7.28271312e-01, -5.45713671e-04, 5.79942083e-04))
     p.add_box("head", "base_link", size=(.28, 0.23, .2), position=(0.0, 0.06, 1.22), color=(0.7,0,1.,0.4))
-    p.add_box("table", "base_link", size=(2, 2, table_thickness), position=(1.25, 0, .48), color=(0,0,1.,0.4))
+    p.add_box("table", "base_link", size=(2, 2, table_thickness), position=(1.25, 0, .74), color=(0,0,1.,0.4))
     # p.add_box("back", "world", size=(2, 0.1, 2), position=(-.28, 0.0, 1), color=(0,0,1.,0.4),orientation=(2,2,0,0))
     # p.add_box("table", "world", size=(2, 2, table_thickness), position=(1.25, 0, .48), color=(0,0,1.,0.4))
     # p.add_box("back", "base_link", size=(2, 0.1, 2), position=(-.28, 0.0, 1), color=(0,0,1.,0.4),orientation=(2,2,0,0))
