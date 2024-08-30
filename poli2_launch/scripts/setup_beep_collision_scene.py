@@ -66,4 +66,4 @@ if __name__=="__main__":
 
     p.add_box("back", "base_link", size=(0.1, 2, 2), position=(-0.35, 0.0, 1), color=(0,0,1.,0.4))
     p.add_box("head", "base_link", size=(0.28, 0.23,0.2), position=(0.0, 0.06, 1.22), color=(0.7,0.0,1.0,0.4))
-    p.add_box("table", "base_link", size=(0.6, 2, table_thickness), position=(0.9144, 0.0, .73), color=(0,0,1.0,0.4))
+    p.add_box("table", "base_link", size=(0.6, 2, table_thickness), position=(1.2827, 0.0, .65), color=(0,0,1.0,0.4))
