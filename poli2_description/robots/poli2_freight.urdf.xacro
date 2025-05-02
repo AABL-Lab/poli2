@@ -45,7 +45,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
 
     <!-- using the f/t sensor we will need this arm urdf-->
-    <xacro:include filename="$(find poli2_description)/urdf/j2s7s300_robotiq_bota.xacro" />
+    <xacro:include filename="$(find poli2_description)/urdf/j2s7s300_robotiq_botasensor.xacro" />
 
     <xacro:property name="M_PI" value="3.14159"/>
     <xacro:property name="HALF_PI" value="1.57079"/>

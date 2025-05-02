@@ -41,6 +41,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <arg name="start_pan_tilt" default="false"/>
   <arg name="start_perception" default="false" />
   <arg name="start_rviz" default="false"/>
+  <arg name="start_ft" default="false"/>
 
   <!-- TODO(Kukanani): this flag is ONLY used for the kinesthetic teaching node, to distinguish between
        the 2D arm simulator and the real robot. This should probably be specified another way, such as
@@ -100,4 +101,8 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     />
   </group>
 
+  <group if="$(arg start_ft)">
+    <include file="$(find poli2_launch)/launch/bota_ftsensor.launch"/>
+  </group>
+  
 </launch>
