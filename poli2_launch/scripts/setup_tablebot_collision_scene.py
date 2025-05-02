@@ -74,6 +74,6 @@ if __name__=="__main__":
 
     safety_buffer = 0.04 
 
-    p.add_box("back", "world", size=(5, 0.3, 2), position=(0, 0.35, 0-board_offset), color=(0,0,1.,0.4))
+#    p.add_box("back", "world", size=(5, 0.3, 2), position=(0, 0.35, 0-board_offset), color=(0,0,1.,0.4))
 
     p.add_box("table", "world", size=(5, 2, table_thickness + board_offset), position=(0, 0, table_z - (table_thickness/2) -board_offset), color=(0,0,1.,0.4))
